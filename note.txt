@@ -1,0 +1,6 @@
+Lancement :
+    flutter test
+Flutter cherche automatiquement les fichiers :
+
+test/**/*_test.dart
+et les exécute.
