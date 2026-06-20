@@ -50,3 +50,9 @@ On passe à dirty state dans ces conditions:
 
 En Flutter, l'état "dirty" (sale) n'a pas de méthode dédiée ou de callback comme onDirty(). Cet état se produit en arrière-plan.
 --------------------------------------------------------------------------------------------
+
+Pour déclencher la méthode dispose(), vous devez retirer définitivement le widget de l'arbre des widgets.
+Quitter l'app libère directement la RAM donc impossible de le declencher.
+Mettre en background l'app ne le déclencher pas.
+La seule solution étant de switcher vers une autre page.
+--------------------------------------------------------------------------------------------
