@@ -4,10 +4,10 @@ class MyHomePage extends StatefulWidget {
   final String title;
 
   MyHomePage({super.key, required this.title}) {
-    print('[Cycle de vie] 0. Constructor. Variable = $title');
+    print('[Cycle de vie] 0. Constructor StatefulWidget Variable = $title');
   }
 
-
+  //StatefulWidget
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
@@ -17,6 +17,10 @@ class _MyHomePageState extends State<MyHomePage>
 {
 
   //-------------CYCLE DE VIE DEBUT----------------//
+  _MyHomePageState() {
+    print('[Cycle de vie] 0. Constructor State en mémoire');
+    // Note : ici 'mounted' n'est pas encore actif, et 'widget.title' est inaccessible
+  }
 
   @override
   void initState() {
