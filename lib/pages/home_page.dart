@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+  const MyHomePage({
+        super.key, required this.title
+      });
+
   final String title;
 
   @override
@@ -9,30 +12,33 @@ class MyHomePage extends StatefulWidget {
 }
 
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MyHomePageState extends State<MyHomePage>
+{
   int _counter = 0;
 
-  void _incrementCounter() {
-    setState(() {
+  void _incrementCounter()
+  {
+    //setState(() {
       _counter++;
-      debugPrint("On a cliquéx ");
+      debugPrint('$_counter');
 
-    });
-    debugPrint("On a cliqué 2x");
+    //});
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context)
+  {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        backgroundColor: Theme.of(context).colorScheme.onPrimaryContainer,
         title: Text(widget.title),
       ),
+
       body: Center(
         child: Column(
           mainAxisAlignment: .center,
           children: [
-            const Text('You have pushed the button this many time:'),
+            const Text('Ho ana tay melissa kitia raha io'),
             Text(
               '$_counter',
               style: Theme.of(context).textTheme.headlineMedium,
@@ -40,6 +46,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
+
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',

@@ -1,6 +1,52 @@
+--------------------------------------------------------------------------------------------
+CODE DE TEST
+
 Lancement :
     flutter test
 Flutter cherche automatiquement les fichiers :
 
 test/**/*_test.dart
 et les exécute.
+
+
+-------------------------------------------------------------------------------------------------
+https://api.flutter.dev/flutter/widgets/State/reassemble.html
+-------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------
+
+Pour bien comprendre la méthode reassemble(), dans le cycle de vie, il faut oublier un instant l'utilisateur final de votre application.
+Cette méthode n'a aucun impact sur la production. Elle a été créée exclusivement pour vous, le développeur,
+pendant que vous codez.Voici sa logique décortiquée simplement :
+1. À quoi ça sert ? (Le déclencheur)reassemble() est la méthode magique qui rend possible le Hot Reload (le rechargement à chaud) dans Flutter.
+Lorsque vous modifiez une ligne de code dans votre IDE (VS Code, Android Studio) et que vous sauvegardez, Flutter ne redémarre pas l'application depuis le début.
+À la place, il injecte le nouveau code et appelle instantanément reassemble() sur tous les widgets actuellement affichés à l'écran.
+2. Quelle est sa logique dans le cycle de vie ?Quand reassemble() est appelée, sa mission est de forcer le widget à se réinitialiser au maximum pour prendre en compte vos modifications de code,
+tout en essayant de garder l'état actuel (vos variables en mémoire, le texte saisi, etc.).Son exécution suit une logique très précise :Vous faites un Hot Reload.
+Flutter appelle reassemble().reassemble() passe immédiatement le widget en état "dirty" (à réenclencher).Flutter appelle ensuite didUpdateWidget() pour vérifier si la configuration a changé.
+Enfin, Flutter appelle build() pour redessiner l'écran avec votre nouveau code.
+3. Un exemple concret pour comprendreImaginez que vous développez un compteur.
+Vous affichez un chiffre à l'écran.Scénario A (Sans reassemble) : Vous changez la couleur du texte du compteur dans votre code.
+Si reassemble() n'existait pas, Flutter ne saurait pas qu'il faut redessiner ce widget précis. Vous devriez redémarrer l'application (Hot Restart), perdre votre score actuel (le compteur repasserait à 0) juste pour voir la nouvelle couleur.
+Scénario B (Avec reassemble) : Vous changez la couleur et sauvegardez. reassemble() est appelée en arrière-plan. Elle force le widget à se reconstruire (build).
+Résultat : La couleur change instantanément sous vos yeux, et votre compteur a gardé sa valeur (par exemple 14).
+4. Quand devez-vous l'utiliser dans votre code ?Dans 99 % des cas, vous n'avez pas besoin d'écrire cette méthode dans votre code.
+Flutter la gère tout seul.
+
+En gros, Cette méthode va immédiatement secouer le widget pour le faire passer de l'état "propre" (clean state) à l'état "corrompu/à refaire" (dirty state).
+
+--------------------------------------------------------------------------------------------
+
+deactivate() : Appelée lorsque le State est temporairement retiré de l'arbre des widgets (par exemple, lors d'un déplacement avec une clé globale).
+
+
+--------------------------------------------------------------------------------------------
+
+On passe à dirty state dans ces conditions:
+1. Le premier affichage d'un Widget (Le "Mount")
+2. L'appel explicite à setState()
+3. La modification d'un ancêtre de type InheritedWidget
+4. La mise à jour des paramètres par un Widget parent (Le "Update")
+5. Le rechargement à chaud (Hot Reload)
+
+En Flutter, l'état "dirty" (sale) n'a pas de méthode dédiée ou de callback comme onDirty(). Cet état se produit en arrière-plan.
+--------------------------------------------------------------------------------------------
