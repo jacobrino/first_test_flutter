@@ -1,5 +1,4 @@
 /*CODE POUR LANCER LA LOGIQUE PRINCIPALE STATEFULWIDGET & STATELESSWIDGET & CYCLE DE VIE*/
-/*
 import 'package:flutter/material.dart';
 //import 'package:first_test/app.dart';
 import 'package:first_test/app_cycle_de_vie.dart';
@@ -7,7 +6,6 @@ import 'package:first_test/app_cycle_de_vie.dart';
 void main() {
   runApp(const FirstActivity());
 }
-*/
 
 /*CODE POUR LANCER LA LOGIQUE PRINCIPALE STATEFULWIDGET & STATELESSWIDGET & CYCLE DE VIE*/
 
@@ -26,7 +24,7 @@ void main() {
 
 
 /*CODE POUR LANCER PROVIDERS*/
-
+/*
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -52,5 +50,41 @@ class MyApp extends StatelessWidget {
       home: HomePageProvider(),
     );
   }
-}
+}*/
 /*CODE POUR LANCER PROVIDERS*/
+
+
+
+
+
+
+
+
+
+/*CODE POUR LANCER BLoC*/
+/*import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'package:first_test/bloc/counter_bloc.dart';
+import 'package:first_test/pages/home_page_bloc.dart';
+
+void main() {
+  runApp(
+    BlocProvider(
+      create: (_) => CounterBloc(),
+      child: const MyApp(),
+    ),
+  );
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: HomePageBloc(),
+    );
+  }
+}*/
+/*CODE POUR LANCER BLoC*/
