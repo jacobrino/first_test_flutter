@@ -1,38 +1,53 @@
 import 'package:flutter/material.dart';
 
-class MyHomePage extends StatelessWidget {
+class MyHomePage extends StatefulWidget {
   const MyHomePage({
-    super.key,
-    required this.title,
-    required this.counter,
-  });
+        super.key, required this.title
+      });
 
   final String title;
-  final int counter;
+
   @override
-  Widget build(BuildContext context) {
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+
+class _MyHomePageState extends State<MyHomePage>
+{
+  int _counter = 0;
+
+  void _incrementCounter()
+  {
+    setState(() {
+      _counter++;
+      print('$_counter');
+    });
+  }
+
+  @override
+  Widget build(BuildContext context)
+  {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.onPrimaryContainer,
-        title: Text(title), // Plus besoin de "widget.title" ici
+        title: Text(widget.title),
       ),
+
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: .center,
           children: [
-            const Text('Le nombre de fois que le bouton a été appuyé :'),
+            const Text('Ho ana tay melissa kitia raha io'),
             Text(
-              '$counter',
+              '$_counter',
               style: Theme.of(context).textTheme.headlineMedium,
             ),
           ],
         ),
       ),
+
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          // On peut faire un print, mais l'écran ne se mettra pas à jour
-          print('Bouton appuyé mais aucune mise à jour peut être fait car stateless');
-        },
+        onPressed: _incrementCounter,
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ),

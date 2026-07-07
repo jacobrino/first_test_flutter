@@ -12,7 +12,7 @@ class FirstActivity extends StatelessWidget
       title: 'Flutter Demos',
 
       //home: const MyHomePage(title: 'Flutter Demo Home'),
-      home: MyHomePage(title: 'Flutter Demo Home', counter: 2), //For test cycle de vie
+      home: MyHomePage(title: 'Flutter Demo Home'), //For test cycle de vie
     );
   }
 }
