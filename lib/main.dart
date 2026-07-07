@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-
-import 'package:first_test/app_provider.dart';
-import 'package:first_test/pages/home_page_provider.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:first_test/bloc/counter_bloc.dart';
+import 'package:first_test/pages/home_page_bloc.dart';
 
 void main() {
   runApp(
-    ChangeNotifierProvider(
-      create: (_) => AppProvider(),
+    BlocProvider(
+      create: (_) => CounterBloc(),
       child: const MyApp(),
     ),
   );
@@ -19,8 +18,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: true,
-      home: HomePageProvider(),
+      home: HomePageBloc(),
     );
   }
 }
