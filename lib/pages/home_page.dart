@@ -38,7 +38,7 @@ class _MyHomePageState extends State<MyHomePage>
         child: Column(
           mainAxisAlignment: .center,
           children: [
-            const Text('Ho ana tay melissa kitia raha io'),
+            const Text('Le nombre de fois que le bouton a été appuyé:'),
             Text(
               '$_counter',
               style: Theme.of(context).textTheme.headlineMedium,

@@ -1,13 +1,11 @@
-//import 'package:first_test/pages/home_page.dart';
-import 'package:first_test/pages/home_page_cycle_de_vie.dart';
-
+import 'package:first_test/pages/home_page.dart';
 import 'package:flutter/material.dart';
 
 class FirstActivity extends StatelessWidget
 {
   const FirstActivity({super.key});
 
-  // This widget is the root of your application.
+  // This widget is the root of our application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
