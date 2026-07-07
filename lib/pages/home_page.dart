@@ -1,54 +1,38 @@
 import 'package:flutter/material.dart';
 
-class MyHomePage extends StatefulWidget {
+class MyHomePage extends StatelessWidget {
   const MyHomePage({
-        super.key, required this.title
-      });
+    super.key,
+    required this.title,
+    required this.counter,
+  });
 
   final String title;
-
+  final int counter;
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-
-class _MyHomePageState extends State<MyHomePage>
-{
-  int _counter = 0;
-
-  void _incrementCounter()
-  {
-    //setState(() {
-      _counter++;
-      debugPrint('$_counter');
-
-    //});
-  }
-
-  @override
-  Widget build(BuildContext context)
-  {
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.onPrimaryContainer,
-        title: Text(widget.title),
+        title: Text(title), // Plus besoin de "widget.title" ici
       ),
-
       body: Center(
         child: Column(
-          mainAxisAlignment: .center,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text('Le nombre de fois que le bouton a été appuyé:'),
+            const Text('Le nombre de fois que le bouton a été appuyé :'),
             Text(
-              '$_counter',
+              '$counter',
               style: Theme.of(context).textTheme.headlineMedium,
             ),
           ],
         ),
       ),
-
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
+        onPressed: () {
+          // On peut faire un print, mais l'écran ne se mettra pas à jour
+          print('Bouton appuyé mais aucune mise à jour peut être fait car stateless');
+        },
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ),
